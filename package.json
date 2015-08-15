@@ -15,7 +15,7 @@
     "express": "4.13.3",
     "lodash": "3.10.1",
     "redis": "0.12.1",
-    "ritzy": "0.1.0",
+    "ritzy": "0.1.1",
     "shortid": "2.2.2",
     "swarm": "0.3.25",
     "swarm-restapi": "0.3.24",
