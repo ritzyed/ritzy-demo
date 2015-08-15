@@ -1,0 +1,30 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "ecmaFeatures": {
+    "modules": true,
+    "blockBindings": true
+  },
+  "sourceType": "module",
+  "globals": {
+    "__DEV__": true,
+    "__SERVER__": true
+  },
+  "rules": {
+    // Strict mode
+    "strict": [2, "global"],
+
+    // Code style,  0=off, 1=warning, 2=error
+    "indent": [1, 2],
+    "quotes": [1, "single"],
+    "curly": [1, "multi-line"],
+    "semi": [1, "never"],
+    "space-unary-ops": [1, { "words": true, "nonwords": false }],
+    "no-underscore-dangle": [0],  // leading underscore is useful inside React components
+    "no-var": [1]
+  }
+}

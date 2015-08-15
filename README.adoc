@@ -1,0 +1,11 @@
+= Ritzy Editor Demo
+
+A demo of the https://github.com/ritzyed/ritzy[Ritzy] collaborative real-time browser-based editor.
+
+== Support
+
+Support is provided on an as-available basis via
+https://github.com/ritzyed/ritzy/issues[GitHub issues].
+
+Contact mailto:raman@vivosys.com[raman@vivosys.com] @
+http://vivosys.com[VIVO Systems] for paid support or enhancements.

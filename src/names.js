@@ -1,0 +1,55 @@
+const names = [
+  { 'name': 'Winters Berry' },
+  { 'name': 'Richards Barlow' },
+  { 'name': 'Pruitt Jacobs' },
+  { 'name': 'Skinner Jacobson' },
+  { 'name': 'Gabrielle Compton' },
+  { 'name': 'Michael Gibbs' },
+  { 'name': 'Coffey Patterson' },
+  { 'name': 'Barbra Patrick' },
+  { 'name': 'Goff Kelly' },
+  { 'name': 'Berry Kim' },
+  { 'name': 'Walker Shaffer' },
+  { 'name': 'Kari Rich' },
+  { 'name': 'Berta Mccray' },
+  { 'name': 'Janice Pierce' },
+  { 'name': 'Burton Mckenzie' },
+  { 'name': 'Mccarthy Sandoval' },
+  { 'name': 'Tammie Reid' },
+  { 'name': 'Blake Ellison' },
+  { 'name': 'Richmond Fulton' },
+  { 'name': 'Todd Hubbard' },
+  { 'name': 'Patrice Rodriguez' },
+  { 'name': 'Hutchinson Ray' },
+  { 'name': 'Hartman Collier' },
+  { 'name': 'Hart Sheppard' },
+  { 'name': 'Juliana Little' },
+  { 'name': 'Rosanne Lee' },
+  { 'name': 'Randolph Heath' },
+  { 'name': 'Suarez Hopper' },
+  { 'name': 'Morgan Deleon' },
+  { 'name': 'Marsha Oliver' },
+  { 'name': 'Pratt Alexander' },
+  { 'name': 'Sampson Ayala' },
+  { 'name': 'David Travis' },
+  { 'name': 'Lamb Rollins' },
+  { 'name': 'Adela Hardy' },
+  { 'name': 'Melendez Faulkner' },
+  { 'name': 'Kay Blackwell' },
+  { 'name': 'Felicia Whitney' },
+  { 'name': 'Torres Spencer' },
+  { 'name': 'Mamie Pennington' },
+  { 'name': 'Parks Albert' },
+  { 'name': 'Cannon Romero' },
+  { 'name': 'Deidre Lamb' },
+  { 'name': 'Foreman Blackburn' },
+  { 'name': 'Kelli Brennan' },
+  { 'name': 'White Duran' }
+]
+
+let min = 0
+let max = names.length - 1
+
+export default function randomName() {
+  return names[Math.floor(Math.random() * (max - min + 1)) + min].name
+}
