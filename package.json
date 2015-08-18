@@ -2,12 +2,17 @@
   "name": "ritzy-demo",
   "version": "0.1.0",
   "description": "Ritzy Collaborative Web-based Rich Text Editor Demo",
-  "main": "index.js",
+  "main": "build/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node build/server.js"
   },
   "author": "Raman <rocketraman@gmail.com> (https://github.com/rocketraman)",
   "repository": "ritzyed/ritzy-demo",
+  "engines": {
+    "node": ">= 0.12",
+    "npm": ">= 2.11"
+  },
   "homepage": "http://ritzyed.github.io/ritzy",
   "bugs": "https://github.com/ritzyed/ritzy-demo/issues",
   "license": "Apache-2.0",
