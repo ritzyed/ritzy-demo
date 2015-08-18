@@ -16,9 +16,11 @@ import createReplica from './createReplica'
 import randomName from './names'
 
 let redisConfig = {
-  port: 6379,
-  host: '127.0.0.1',
-  options: {}
+  port: process.env.OPENSHIFT_REDIS_PORT || 6379,
+  host: process.env.OPENSHIFT_REDIS_HOST || '127.0.0.1',
+  options: {
+    auth_pass: process.env.REDIS_PASSWORD || null
+  }
 }
 
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_~')
@@ -27,8 +29,10 @@ let swarmServer = new SwarmServer(redisConfig)
 let Swarm = swarmServer.Swarm
 
 let server = express()
-let port = process.env.PORT || 5000
+let port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 5000
+let ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || 'localhost'
 server.set('port', port)
+server.set('ip', ip)
 //server.use(compression())
 server.use(express.static(path.join(__dirname)))
 
@@ -90,7 +94,7 @@ server.put(/^\/sapi\//, apiHandler)
 
 let httpServer = http.createServer(server)
 
-httpServer.listen(server.get('port'), function(err) {
+httpServer.listen(server.get('port'), server.get('ip'), function(err) {
   if (err) {
     console.warn('Can\'t start HTTP server. Error: ', err, err.stack)
     return
@@ -101,7 +105,7 @@ httpServer.listen(server.get('port'), function(err) {
   if (process.send) {
     process.send('online')
   }
-  console.log('The HTTP server is listening on port ' + server.get('port'))
+  console.log('The HTTP server is listening on port ' + server.get('ip') + '/' + server.get('port'))
 })
 
 // start WebSocket server
