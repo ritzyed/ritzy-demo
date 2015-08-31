@@ -6,12 +6,49 @@
   <title><%- title %></title>
   <meta name="description" content="Ritzy Collaborative Real-time Browser-Based Editor Demo">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
+    html {
+      box-sizing: border-box;
+    }
+
+    *, *:after, *:before {
+      box-sizing: inherit;
+    }
+
     body {
       padding-top: 30px;
       padding-left: 30px;
       background-color: #f9f9f9;
       font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+
+    #content:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    #editor {
+      float: left;
+      margin-right: 10px;
+      background-color: #fffefc;
+    }
+
+    #controls {
+      padding-left: 10px;
+      width: auto;
+      overflow: hidden;
+    }
+
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .row-pad {
+      padding-bottom: 10px;
     }
 
     @media (max-width: 980px) {
@@ -26,13 +63,10 @@
       id: '<%= id %>',
       fontSize: 18,
       width: 600,
-      marginH: 50,
-      marginV: 30,
+      margin: { horizontal: 50, vertical: 30 },
       userId: '<%= userId %>',
-      userName: '<%= userName %>',
-      onLoadError: function(err) {
-        document.getElementById('editor').innerHTML = 'Oops, I couldn\'t load the editor:\n\n' + err
-      }
+      userName: '<%= userName %>'/*,
+      skin: 'custom'*/
     }
   </script>
 </head>
@@ -44,7 +78,97 @@
 
 <h1>Ritzy Demo : Editor <%= id %></h1>
 
-<div id="editor"></div>
+<p><a href="/">Demo Home</a> > Editor <%= id %></p>
+
+<div id="content">
+  <div id="editor"></div>
+  <div id="controls">
+    <div class="row">
+      <h4>Local User</h4>
+    </div>
+    <div class="row">
+      <label for="userName">User Name:</label><INPUT type="text" id="userName"><button id="userNameApply">Apply</button>
+    </div>
+    <div class="row">
+      <h4>Remote Users</h4>
+    </div>
+    <div id="activeUsers">
+    </div>
+    <div class="row">
+      <h4>Settings</h4>
+    </div>
+    <div class="row row-pad">
+      <label for="fontSize">Font Size:</label><INPUT type="text" id="fontSize" size="5"><button id="fontSizeApply">Apply</button>
+    </div>
+    <div class="row">
+      <label for="width">Width:</label><INPUT type="text" id="width" size="5"><button id="widthApply">Apply</button>
+    </div>
+    <div class="row">
+      <h5>Margin</h5>
+    </div>
+    <div class="row">
+      <label for="marginH">Sides:</label><INPUT type="text" id="marginH" size="5"><button id="marginHApply">Apply</button>&nbsp;
+      <label for="marginV">Top/Bot:</label><INPUT type="text" id="marginV" size="5"><button id="marginVApply">Apply</button>
+    </div>
+    <div class="row">
+      <h4>Content</h4>
+    </div>
+    <div class="row row-pad">
+      Access editor content. Output is printed to the console.
+    </div>
+    <div class="row">
+      <button id="getContents">CRDT</button>
+      <button id="getContentsRich">Rich</button>
+      <button id="getContentsHtml">HTML</button>
+      <button id="getContentsText">Text</button>
+    </div>
+    <div class="row">
+      <h4>Selection</h4>
+    </div>
+    <div class="row row-pad">
+      Access editor selection. Output is printed to the console.
+    </div>
+    <div class="row">
+      <button id="getSelection">CRDT</button>
+      <button id="getSelectionRich">Rich</button>
+      <button id="getSelectionHtml">HTML</button>
+      <button id="getSelectionText">Text</button>
+    </div>
+    <div class="row">
+      <h4>Event Registration</h4>
+    </div>
+    <div class="row row-pad">
+      Toggle various event callbacks. Callback parameters are printed to the console.
+    </div>
+    <div class="row row-pad">
+      <INPUT type="checkbox" id="onPositionChange"><label for="onPositionChange">position-change</label>
+    </div>
+    <div class="row row-pad">
+      <INPUT type="checkbox" id="onSelectionChange"><label for="onSelectionChange">selection-change</label>
+    </div>
+    <div class="row row-pad">
+      <INPUT type="checkbox" id="onFocusGained"><label for="onFocusGained">focus-gained</label>
+    </div>
+    <div class="row row-pad">
+      <INPUT type="checkbox" id="onFocusLost"><label for="onFocusLost">focus-lost</label>
+    </div>
+    <div class="row row-pad">
+      <INPUT type="checkbox" id="onRemoteCursorAdd"><label for="onRemoteCursorAdd">remote-cursor-add</label>
+    </div>
+    <div class="row row-pad">
+      <INPUT type="checkbox" id="onRemoteCursorRemove"><label for="onRemoteCursorRemove">remote-cursor-remove</label>
+    </div>
+    <div class="row row-pad">
+      <INPUT type="checkbox" id="onRemoteCursorChangeName"><label for="onRemoteCursorChangeName">remote-cursor-change-name</label>
+    </div>
+    <div class="row row-pad">
+      <INPUT type="checkbox" id="onTextInsert"><label for="onTextInsert">text-insert</label>
+    </div>
+    <div class="row row-pad">
+      <INPUT type="checkbox" id="onTextDelete"><label for="onTextDelete">text-delete</label>
+    </div>
+  </div>
+</div>
 <script src="/app.js"></script>
 
 <script>

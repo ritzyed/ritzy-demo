@@ -1,13 +1,23 @@
 import 'babel/polyfill'
 import Ritzy from 'ritzy'
-
-// font support is baking (so configuration is left at the OpenSans default)
-// the most often used config values are shown below
+import controls from './controls'
 
 document.addEventListener('DOMContentLoaded', function() {
-  let ritzy = new Ritzy(config)
-
   const renderTarget = document.getElementById('editor')
-  ritzy.render(renderTarget)
-  // ritzy.on, etc.
+  let ritzy = new Ritzy(config, renderTarget)
+
+  ritzy.load((err) => {
+    document.getElementById('editor').innerHTML = 'Oops, I couldn\'t load the editor:\n\n' + err
+  })
+
+  // setup API controls
+  controls.localUser(ritzy)
+  controls.remoteCursorEvents(ritzy)
+  controls.settings(ritzy)
+  controls.contents(ritzy)
+  controls.selection(ritzy)
+  controls.events(ritzy)
+
+  // for access to ritzy via the console
+  window.ritzy = ritzy
 })

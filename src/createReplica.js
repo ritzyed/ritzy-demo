@@ -152,7 +152,7 @@ export default function createReplica(Swarm, id) {
     { 'text': 'API', 'attrs': {'bold': true, 'underline': true} },
     { 'text': '\n', 'attrs': null },
     { 'text': '\n', 'attrs': null },
-    { 'text': 'This is a work in progress. Soon, we\'ll have some controls to the right that allow interacting with the editor via its API.', 'attrs': null },
+    { 'text': 'The controls to the right demonstrate interaction with the editor via its API.', 'attrs': null },
     { 'text': '\n', 'attrs': null },
     { 'text': '\n', 'attrs': null },
     { 'text': 'More Information', 'attrs': {'bold': true, 'underline': true} },
