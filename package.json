@@ -5,6 +5,7 @@
   "main": "build/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "gulp build",
     "start": "node build/server.js"
   },
   "author": "Raman <rocketraman@gmail.com> (https://github.com/rocketraman)",
