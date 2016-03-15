@@ -1,6 +1,19 @@
 = Ritzy Editor Demo
 
-A demo of the https://github.com/ritzyed/ritzy[Ritzy] collaborative real-time browser-based editor.
+A demo of the https://github.com/ritzyed/ritzy[Ritzy] collaborative real-time browser-based editor. The
+demo is generally up and running at:
+
+http://demo-ritzy.rhcloud.com/
+
+== Running the Demo Locally
+
+The demo can be run locally by doing:
+
+ npm install
+ npm run
+
+You must have a local redis server listening on the standard port. Optionally, change the redis connection
+configuration in `src.server.js`.
 
 == Support
 
